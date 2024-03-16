@@ -116,9 +116,12 @@ let time = 10;
 let started = false;
 
 function formatTime(time) {
-    if (time <= 0) {
+    let negative = '';
+    if (time < 0) {
         timerText.style.color = 'red';
-        return `00:00`;
+        negative = '-';
+        time = Math.abs(time);
+        //return `00:00`;
     } else if (time < 10) {
         timerText.style.color = 
             time % 2 == 0 ? 'red' 
@@ -134,7 +137,7 @@ function formatTime(time) {
     seconds = seconds < 10 ? `0${seconds}` : seconds;
 
 
-    return `${minutes}:${seconds}`;
+    return `${negative}${minutes}:${seconds}`;
 }
 
 function getTime() {
